@@ -1,0 +1,11 @@
+D:\augurs projects\Task\Task\bin\Release\Task.dll.config
+D:\augurs projects\Task\Task\bin\Release\Task.dll
+D:\augurs projects\Task\Task\bin\Release\Task.pdb
+D:\augurs projects\Task\Task\bin\Release\EntityFramework.dll
+D:\augurs projects\Task\Task\bin\Release\EntityFramework.SqlServer.dll
+D:\augurs projects\Task\Task\bin\Release\EntityFramework.xml
+D:\augurs projects\Task\Task\bin\Release\EntityFramework.SqlServer.xml
+D:\augurs projects\Task\Task\obj\Release\Task.Model.csproj.CoreCompileInputs.cache
+D:\augurs projects\Task\Task\obj\Release\Task.Model.csproj.CopyComplete
+D:\augurs projects\Task\Task\obj\Release\Task.dll
+D:\augurs projects\Task\Task\obj\Release\Task.pdb

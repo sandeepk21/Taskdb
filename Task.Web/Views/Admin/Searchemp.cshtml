@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Task.Web.ViewModel.Tbl_EmployeeViewModel>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GenderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pincode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JoiningDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastWorkingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    @if (item.GenderId == 1)
+    {
+        <td>Male</td>
+    }
+    else
+    {
+        <td>Female</td>
+    }
+    <td>
+        @Html.DisplayFor(modelItem => item.CityId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Password)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pincode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.JoiningDate)
+    </td>
+    @if (item.LastWorkingDate == null)
+    {
+        <td>NULL</td>
+    }
+    else
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.LastWorkingDate)
+        </td>
+    }
+    @if (item.IsActive == 1)
+    {
+        <td>Active</td>
+    }
+    else
+    {
+        <td>Deactivate</td>
+    }
+    <td>
+        @Html.ActionLink("Edit", "EmployeeEdit", new { id = item.EmployeeId }) |
+        @if (item.IsActive == 1)
+        {
+            @Html.ActionLink("Deactivate", "EmployeeDeActive", new { id = item.EmployeeId })
+        }
+        else
+        {
+            @Html.ActionLink("Activate", "EmployeeActive", new { id = item.EmployeeId })
+        }
+
+    </td>
+</tr>
+}
+
+</table>

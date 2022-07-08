@@ -1,0 +1,131 @@
+﻿@model Task.Web.ViewModel.Tbl_UserViewModel
+
+@{
+    ViewBag.Title = "UserEdit";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+
+<h2>UserEdit</h2>
+
+@using (Html.BeginForm("UserEdit","Admin",FormMethod.Post,new { id="usereditfrom"}))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="row">
+
+    <div class="col-lg-2"></div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Role</label>
+            <div class="col-md-10">
+                @Html.DropDownList("RoleId", ViewBag.rolelist as SelectList, "--select--", new { @class = "form-control", required = "Required" })
+                <span id="Rolegroup"></span>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="col-md-10">
+                @Html.DropDownList("GenderId", ViewBag.genderlist as SelectList, "--select--", new { @class = "form-control", required = "Required" })
+                <span id="gendergroup"></span>
+                @*<select class="form-control" name="GenderId" id="GenderId">
+                </select>*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Country</label>
+            <div class="col-md-10">
+                @Html.DropDownList("Country", ViewBag.country as SelectList, "-select-", new { @class = "form-control", required = "Required" })
+                <span id="countrygroup"></span>
+                @*<select class="form-control" name="CountrtId" id="CountrtId">
+                </select>*@
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+    <div class="form-group">
+        <label>State</label>
+        <div class="col-md-10">
+            @*@Html.DropDownList("StateId" ViewBag.citylist as SelectList, "-select-", new { @class = "form-control" })*@
+            <select class="form-control" id="StateId" required></select>
+            <span id="stategroup"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>City</label>
+        <div class="col-md-10">
+            @*@Html.DropDownListFor(model => model.CityId, ViewBag.citylist as SelectList, "-select-", new { @class = "form-control" })*@
+            <select class="form-control" name="CityId" id="CityId" required>
+            </select>
+            <span id="citygroup"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserNickName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserNickName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserNickName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label(" ")
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="form-control"style="background: #009efb" />
+        </div>
+    </div>
+</div>
+    <div cl-lg-2></div>
+</div>
+}
+

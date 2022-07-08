@@ -1,0 +1,15 @@
+D:\augurs projects\Task\Task.Service\bin\Debug\Task.Service.dll
+D:\augurs projects\Task\Task.Service\bin\Debug\Task.Service.pdb
+D:\augurs projects\Task\Task.Service\bin\Debug\Task.Data.dll
+D:\augurs projects\Task\Task.Service\bin\Debug\Task.dll
+D:\augurs projects\Task\Task.Service\bin\Debug\EntityFramework.dll
+D:\augurs projects\Task\Task.Service\bin\Debug\Task.Data.pdb
+D:\augurs projects\Task\Task.Service\bin\Debug\Task.Data.dll.config
+D:\augurs projects\Task\Task.Service\bin\Debug\Task.pdb
+D:\augurs projects\Task\Task.Service\bin\Debug\Task.dll.config
+D:\augurs projects\Task\Task.Service\bin\Debug\EntityFramework.xml
+D:\augurs projects\Task\Task.Service\obj\Debug\Task.Service.csproj.AssemblyReference.cache
+D:\augurs projects\Task\Task.Service\obj\Debug\Task.Service.csproj.CoreCompileInputs.cache
+D:\augurs projects\Task\Task.Service\obj\Debug\Task.Service.csproj.CopyComplete
+D:\augurs projects\Task\Task.Service\obj\Debug\Task.Service.dll
+D:\augurs projects\Task\Task.Service\obj\Debug\Task.Service.pdb

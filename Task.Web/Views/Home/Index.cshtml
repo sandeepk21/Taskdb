@@ -1,0 +1,54 @@
+﻿@model Task.Web.ViewModel.Tbl_UserViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/jquery-3.2.1.min.js"></script>
+<div class=" container">
+
+    <div class="row">
+
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4" style="border:1px solid #DDDD;margin-top:10px;border-radius:5px;">
+
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-12">
+                    <h4 style="text-align:center">Login</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group" >
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10" >
+                            @Html.TextBoxFor(model => model.Email,  new { @class = "form-control" } )
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10" >
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control" } )
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Login" class="form-control" />
+                        </div>
+                    </div>
+                        </div>
+                </div>
+            }
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
+

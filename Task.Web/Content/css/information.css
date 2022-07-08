@@ -1,0 +1,6 @@
+﻿.card-body {
+    background: #efeffb;
+}
+.form-control[readonly] {
+    background-color: #deeff5;
+}

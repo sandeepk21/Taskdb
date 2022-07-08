@@ -1,0 +1,266 @@
+﻿@model IEnumerable<Task.Web.ViewModel.Tbl_UserViewModel>
+
+
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+
+<h2>AddUser</h2>
+
+
+<div class="alert alert-success" role="alert" id="dd1">
+</div>
+@using (Html.BeginForm("AddUser", "Admin", FormMethod.Post, new { id = "myform" }))
+{
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            @Html.AntiForgeryToken()
+
+
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label>First Name</label>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" name="FirstName" class="form-control" id="FirstName" required data-parsley-trigger="keyup" />
+                    <span id="firstgroup"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" name="LastName" class="form-control" id="LastName" required data-parsley-trigger="keyup" />
+                    <span id="lastgroup"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>User Name</label>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" name="Username" class="form-control" id="Username" required data-parsley-trigger="keyup" />
+                    <span id="usergroup"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="email" name="Email" class="form-control" id="Email" required data-parsley-type="email" data-parsley-trigger="keyup" />
+                    <span id="emailgroup"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="password" name="Password" class="form-control" id="Password" required data-parsley-length="[8,16]" data-parsley-trigger="keyup" />
+                    <span id="passwordgroup"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("RoleId", ViewBag.rolelist as SelectList, "--select--", new { @class = "form-control", required = "Required" })
+                    <span id="Rolegroup"></span>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+
+
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("GenderId", ViewBag.genderlist as SelectList, "--select--", new { @class = "form-control", required = "Required" })
+                    <span id="gendergroup"></span>
+                    @*<select class="form-control" name="GenderId" id="GenderId">
+                        </select>*@
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("Country", ViewBag.country as SelectList, "-select-", new { @class = "form-control", required = "Required" })
+                    <span id="countrygroup"></span>
+                    @*<select class="form-control" name="CountrtId" id="CountrtId">
+                        </select>*@
+                </div>
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <div class="col-md-10">
+                    @*@Html.DropDownList("StateId" ViewBag.citylist as SelectList, "-select-", new { @class = "form-control" })*@
+                    <select class="form-control" id="StateId" required></select>
+                    <span id="stategroup"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <div class="col-md-10">
+                    @*@Html.DropDownListFor(model => model.CityId, ViewBag.citylist as SelectList, "-select-", new { @class = "form-control" })*@
+                    <select class="form-control" name="CityId" id="CityId" required>
+                    </select>
+                    <span id="citygroup"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Nick Name</label>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.UserNickName, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" class="form-control" id="UserNickName" name="UserNickName" required data-parsley-trigger="keyup" />
+                    <span id="nickgroup"></span>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                @Html.Label(" ")
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="form-control" id="sub" style="background: #009efb" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+}
+<div class="row">
+    <hr />
+</div>
+
+@using (Ajax.BeginForm("SearchUser", "Admin",
+new AjaxOptions()
+{
+   HttpMethod = "POST",
+   InsertionMode = InsertionMode.Replace,
+   UpdateTargetId = "usertb"
+}
+))
+{
+    <div class="row">
+
+
+        <div class="col-2">
+            <div class="form-group">
+
+                <input type="text" name="SearchFirstName" id="SearchFirstName" class="form-control" placeholder="Search Name" />
+            </div>
+        </div>
+        <div class="col-2">
+            <input type="submit" id="Usersearchbtn" class="form-control" value="Search" style="background:#009efb;color:white;" />
+        </div>
+    </div>
+}
+<table class="table" id="usertb">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GenderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserNickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+
+            @if (item.RoleId == 1)
+            {
+                <td>Admin</td>
+            }
+            else
+            {
+                <td>User</td>
+            }
+
+
+            @if (item.GenderId == 1)
+            {
+                <td>Male</td>
+            }
+            else
+            {
+                <td>Female</td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.CityId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserNickName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UserEdit", new { id = item.UserId }) |
+
+                @Html.ActionLink("Delete", "UserDelete", new { id = item.UserId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .parsley-required {
+        color: red;
+    }
+
+    .parsley-type {
+        color: red;
+    }
+
+    .parsley-length {
+        color: red;
+    }
+    #dd1{
+        display:none;
+    }
+</style>
